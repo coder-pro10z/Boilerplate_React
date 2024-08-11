@@ -60,7 +60,10 @@ function App() {
         <NavBar /> {/* NavBar at the top, full width */}
         <div className="flex flex-grow">
           <SideBar /> {/* SideBar on the left */}
-          <main className="flex-grow p-4 overflow-y-auto">
+          {/* <main className="flex-grow p-4 overflow-y-auto">
+           */}
+           <main className="flex-grow ml-64 mt-16 p-4 overflow-y-auto">
+
             {/* Main content area, taking up remaining space */}
             <Routes>
               <Route path="/" element={<HomePage/>} />
