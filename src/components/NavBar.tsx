@@ -1,30 +1,91 @@
+// import React from 'react';
+// import { Link } from 'react-router-dom';
+// import Menu from './Menu'; // Assuming you have a Menu component
+
+// const NavBar: React.FC = () => {
+//   return (
+//     <header className="w-full bg-blue-600 text-white fixed top-0 left-0 z-50 shadow-md">
+//       <div className="container mx-auto flex justify-between items-center p-4">
+//         <div className="flex items-center space-x-4">
+//           {/* Add an icon or logo here */}
+//           <span className="font-bold text-xl">MyApp</span>
+//         </div>
+//         <Menu />
+//       </div>
+//     </header>
+//   );
+// };
+
+// export default NavBar;
+
+// import React from 'react';
+// import Menu from './Menu';
+// import { FaIcons } from 'react-icons/fa';
+// // import Menu from '/Menu'; // Assuming you have a Menu component
+
+// const NavBar: React.FC = () => {
+//   return (
+//     <header className="w-full bg-blue-600 text-white shadow-md z-50">
+//       <div className="container mx-auto flex justify-between items-center p-4">
+//         <div className="flex items-center space-x-4">
+//         <div className="flex items-center space-x-4">
+//           {/* Add an icon before the MyApp text */}
+//           <FaIcons /> {/* Replace FaBars with your desired icon */}
+//           <span className="font-bold text-xl">MyApp</span>
+//         </div>
+//           {/* <span className="font-bold text-xl">MyApp</span> */}
+//         </div>
+//         <Menu />
+//       </div>
+//     </header>
+//   );
+// };
+
+// export default NavBar;
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { FaHome } from 'react-icons/fa'; // Import a FontAwesome icon
+import { useLocation } from 'react-router-dom';
 import Menu from './Menu';
+import { FaHome } from 'react-icons/fa'; // Example icon
 
 const NavBar: React.FC = () => {
-  return (
-    <nav className="bg-blue-500 p-4">
-      <div className="container mx-auto flex justify-between items-center">
+  const location = useLocation();
+  const path = location.pathname;
 
-        <div className="text-white font-bold text-xl">
-          MyApp
+  // Map paths to page titles
+  const getPageTitle = (path: string) => {
+    switch (path) {
+      case '/':
+        return 'Home';
+      case '/about':
+        return 'About';
+      case '/contact':
+        return 'Contact';
+      case '/profile':
+        return 'Profile';
+      case '/settings':
+        return 'Settings';
+      case '/logout':
+        return 'Logout';
+      default:
+        return 'MyApp'; // Default title
+    }
+  };
+
+  return (
+    <header className="w-full bg-blue-600 text-white shadow-md z-50 fixed">
+      <div className="container mx-auto flex justify-between items-center p-4">
+        <div className="flex items-center space-x-4">
+          {/* Icon or logo on the left */}
+          <FaHome /> {/* Replace with your desired icon */}
+          <span className="font-bold text-xl">MyApp</span>
         </div>
-        <div className="space-x-4">
-          <Link to="/" className="text-white hover:text-gray-300">
-            Home
-          </Link>
-          <Link to="/about" className="text-white hover:text-gray-300">
-            About
-          </Link>
-          <Link to="/contact" className="text-white hover:text-gray-300">
-            Contact
-          </Link>
+        {/* Dynamic title in the center */}
+        <div className="flex-1 text-center">
+          <span className="text-lg font-semibold">{getPageTitle(path)}</span>
         </div>
-      <Menu />
+        <Menu />
       </div>
-    </nav>
+    </header>
   );
 };
 
