@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
+import DonutChart from './DonutChart';
 
 const TimeTracker: React.FC = () => {
   const [totalHours, setTotalHours] = useState<number>(24);
   const [usedHours, setUsedHours] = useState<number>(0);
-  const [areas, setAreas] = useState<{ area: string, hours: number }[]>([
-    { area: 'Work', hours: 0 },
-    { area: 'Exercise', hours: 0 },
-    { area: 'Leisure', hours: 0 },
-  ]);
+  
+    const [areas, setAreas] = useState<{ area: string, hours: number }[]>([
+      { area: 'Work', hours: 10 },
+      { area: 'Exercise', hours: 5 },
+      { area: 'Leisure', hours: 5 },
+      { area: 'Sleep', hours: 0 },
+      { area: 'Other', hours: 0 },
+    ]);
 
   const remainingHours = totalHours - usedHours;
 
@@ -22,11 +26,9 @@ const TimeTracker: React.FC = () => {
         const totalUsedHours = updatedAreas.reduce((sum, area) => sum + area.hours, 0);
         setUsedHours(totalUsedHours);
         setAreas(updatedAreas);
-      
-
   };
   }
-  return (
+  return (<div className='flex justify-center items-center space-x-8 mt-8'>
     <div className="p-4 max-w-lg mx-auto bg-white rounded shadow">
       <h1 className="text-2xl font-bold mb-4">Time Tracker</h1>
       <p className="mb-2">Total Hours: {totalHours}</p>
@@ -46,6 +48,9 @@ const TimeTracker: React.FC = () => {
         ))}
       </div>
     </div>
+      <DonutChart areas={areas} /> {/* Pass the areas as a prop to DonutChart */}
+              
+              </div>
   );
 };
 

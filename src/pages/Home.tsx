@@ -10,7 +10,6 @@ const HomePage: React.FC = () => {
       <p className="text-lg">This is the Home Page. Navigate using the menu above.</p>
   <div className="timeTracker flex justify-center items-center space-x-8 mt-8">
     <TimeTracker/>
-    <DonutChart/>
   </div>
     </div>
   </>
