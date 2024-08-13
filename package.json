@@ -46,7 +46,10 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
+    "css-loader": "^7.1.2",
     "postcss": "^8.4.41",
+    "sass": "^1.77.8",
+    "style-loader": "^4.0.0",
     "tailwindcss": "^3.4.9"
   }
 }
